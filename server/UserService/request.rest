@@ -1,0 +1,73 @@
+
+# create user
+POST http://localhost:3001/api/auth/register
+Content-Type: application/json
+
+{
+    "firstname":"Eugene",
+     "email":"eugenekorir11@gmail.com",
+     "lastname":"korir", 
+     "isAdmin":false,
+    "password":"@Eugene123"
+}
+
+
+### login
+
+POST http://localhost:3001/api/auth/login
+Content-Type: application/json
+
+{
+    "email":"eugenekorir11@gmail.com", 
+    "password":"@Eugene123"
+}
+
+### reset password
+
+POST http://localhost:3001/api/auth/reset-password
+Content-Type: application/json 
+
+{
+    "userId": "ca394499-97da-478a-903b-f109cba61731",
+    "password":"@Caleb123"
+}
+
+### forgot password
+
+POST http://localhost:3001/api/auth/forgot-password
+Content-Type: application/json 
+
+{
+   "email":"eugenekorir11@gmail.com"
+}
+
+### update user
+
+PUT http://localhost:3001/api/auth
+Content-Type: application/json
+
+{
+    "id":"ca394499-97da-478a-903b-f109cba61731",
+    "firstname": "jonathan",
+    "lastname": "mwaniki",
+    "email":"jonathan@gmail.com"
+}
+
+### delete user
+
+PUT http://localhost:3001/api/auth/delete
+Content-Type: application/json
+
+{
+    "email":"jonathan@gmail.com"   
+}
+
+
+###
+
+GET http://localhost:3001/api/auth
+
+###
+
+GET http://localhost:3001/api/auth/ca394499-97da-478a-903b-f109cba61731
+
