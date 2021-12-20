@@ -1,0 +1,62 @@
+### create project
+POST http://localhost:3002/projects
+Content-Type: application/json
+
+{
+    "name":" project1",
+    "client_name":"yahoo",
+    "start_date":"2021, 12, 15",
+    "end_date":"2021, 12, 15",
+    "description":"deleting  tasks"
+}
+
+### get all projects
+
+GET http://localhost:3002/projects
+
+
+### get single project
+
+GET http://localhost:3002/projects/9c1a40c8-1891-4afa-96b7-703ef8ed4c23
+
+
+### update project
+PUT  http://localhost:3002/projects
+Content-Type: application/json
+
+{
+    "project_id":"9c1a40c8-1891-4afa-96b7-703ef8ed4c23",
+    "name":"first updated project",
+    "client_name":"onQ",
+    "start_date":"1995, 11, 17",
+    "end_date":"1995, 11, 20",
+    "description":"getting tasks"
+}
+
+### get assigned user to look
+GET  http://localhost:3002/projects/assign/3c72eba6-b967-4fee-bb8d-7deed7778908
+
+### assign project
+POST  http://localhost:3002/projects/assign
+Content-Type: application/json
+
+{
+    "project_id":"4b363d9c-c24f-409f-8bb0-7473a322e18e",
+    "user_id":"4df9ff7f-a9ba-42f9-9b2e-ed2902381d26"
+}
+
+### unassign project look
+POST  http://localhost:3002/projects/unassign
+Content-Type: application/json
+
+{
+    "project_id":"4b363d9c-c24f-409f-8bb0-7473a322e18e"
+}
+
+### delete project
+PUT   http://localhost:3002/projects/delete
+Content-Type: application/json
+
+{
+    "project_id":"2280a200-2278-4eaf-98f0-2696f74adadd"
+}
