@@ -8,6 +8,6 @@ module.exports = (email, id, isAdmin) => {
       isAdmin,
     },
     process.env.SECRET_KEY,
-    { expiresIn: "2h" }
+    { expiresIn: "24h" }
   );
 };

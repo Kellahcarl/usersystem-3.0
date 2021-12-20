@@ -10,15 +10,16 @@ const {
   resetPassword,
 } = require("../controllers/userAuth");
 const { getUsers, getUser } = require("../controllers/userController");
-const auth = require("../middleware/auth");
+const { authToken, isAdmin } = require("../middleware/auth");
 
-router.post("/login", loginUser);
-router.post("/reset-password", resetPassword);
-router.post("/forgot-password", forgotPassword);
+router.get("/", authToken, getUsers);
+router.get("/:id", authToken, getUser);
+
 router.post("/register", registerUser);
-router.get("/", getUsers);
-router.get("/:id", getUser);
-router.put("/", updateUser);
-router.put("/delete", deleteUser);
+router.post("/login", loginUser);
+router.post("/reset-password", authToken, resetPassword);
+router.post("/forgot-password", forgotPassword);
+router.put("/", authToken, isAdmin, updateUser);
+router.put("/delete", authToken, isAdmin, deleteUser);
 
 module.exports = router;

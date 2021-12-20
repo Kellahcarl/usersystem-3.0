@@ -5,9 +5,9 @@ Content-Type: application/json
 
 {
     "firstname":"Eugene",
-     "email":"eugenekorir11@gmail.com",
+     "email":"eugenekorir12@gmail.com",
      "lastname":"korir", 
-     "isAdmin":false,
+     "isAdmin":true,
     "password":"@Eugene123"
 }
 
@@ -18,7 +18,7 @@ POST http://localhost:3001/api/auth/login
 Content-Type: application/json
 
 {
-    "email":"eugenekorir11@gmail.com", 
+    "email":"eugenekorir12@gmail.com", 
     "password":"@Eugene123"
 }
 
@@ -45,6 +45,7 @@ Content-Type: application/json
 
 PUT http://localhost:3001/api/auth
 Content-Type: application/json
+x-auth-token :Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV1Z2VuZWtvcmlyMTJAZ21haWwuY29tIiwiaWQiOiJiMTJjYzVlOS02YjBlLTRiM2QtYmYyZS0wODkxNDlmYWJhZWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Mzk5MDc4MjYsImV4cCI6MTYzOTk5NDIyNn0.14bOdymG1StUQay0E-nYeNIJ04aj7CQ-Gk7t21qkYIA"
 
 {
     "id":"ca394499-97da-478a-903b-f109cba61731",
@@ -66,6 +67,8 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3001/api/auth
+Authorization:  :Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV1Z2VuZWtvcmlyMTJAZ21haWwuY29tIiwiaWQiOiJiMTJjYzVlOS02YjBlLTRiM2QtYmYyZS0wODkxNDlmYWJhZWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2Mzk5ODE2NDIsImV4cCI6MTY0MDA2ODA0Mn0.GBQu1CPRF_giv8ccJLguOs8s-fvYOR_pi_ruuBtIYhY
+
 
 ###
 
