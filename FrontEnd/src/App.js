@@ -51,7 +51,6 @@ const App = () => {
       EventBus.remove("logout");
     };
   }, [currentUser, logOut]);
-  // console.log(currentUser.user.isAdmin);
 
   return (
     <Router history={history}>

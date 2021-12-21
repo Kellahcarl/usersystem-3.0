@@ -1,4 +1,5 @@
-import { getProjectBoard } from "../../services/user.service";
+import { getAllProjects } from "../../services/projects.service";
+
 import {
   ADD_PROJECT_FAIL,
   ADD_PROJECT_REQUEST,
@@ -11,18 +12,12 @@ import {
 export const getProjects = () => async (dispatch) => {
   try {
     dispatch({ type: GET_PROJECTS_REQUEST });
-    userdata = localStorage.getItem("user");
-    user = JSON.parse(userdata);
 
-    const { data } = await getProjectBoard.get(`${user._id}`, {
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
-    dispatch({ type: GET_PROJECTS_SUCCESS, payload: data });
+    console.log(await getAllProjects());
+    dispatch({ type: GET_PROJECTS_SUCCESS, payload: await getAllProjects() });
   } catch (error) {
-    console.log(error.response.data.message);
-    dispatch({ type: GET_PROJECTS_FAIL, payload: error.response.data.message });
+    console.log(error.message);
+    dispatch({ type: GET_PROJECTS_FAIL, payload: error.message });
   }
 };
 
@@ -30,16 +25,8 @@ export const addProject = (project) => async (dispatch) => {
   // console.log(project);
   try {
     dispatch({ type: ADD_PROJECT_REQUEST });
-    userdata = localStorage.getItem("user");
-    user = JSON.parse(userdata);
-    const { data } = await getProjectBoard.post("/", project, {
-      headers: {
-        ContentType: "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
-    console.log(data);
-    dispatch({ type: ADD_PROJECT_SUCCESS, payload: data });
+
+    dispatch({ type: ADD_PROJECT_SUCCESS, payload: "animationstart" });
   } catch (error) {
     console.log(error.response.data.message);
     console.log(error.message);
