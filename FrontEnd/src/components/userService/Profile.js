@@ -27,12 +27,6 @@ const Profile = () => {
         <strong>Email:</strong> {currentUser.user.email}
       </p>
       <p>
-        <strong>Age:</strong> {currentUser.user.age}
-      </p>
-      <p>
-        <strong>Gender:</strong> {currentUser.user.gender}
-      </p>
-      <p>
         <strong>Admin Status:</strong>{" "}
         {currentUser.user.isAdmin ? <>Administrator</> : <>Normal User</>}
       </p>

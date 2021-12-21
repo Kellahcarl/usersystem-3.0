@@ -5,11 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const BoardAdmin = () => {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProjects());
-  }, []);
-  const { projects } = useSelector((state) => state.projects);
-  console.log(projects[0]);
+
   return (
     <div className="container">
       <header className="jumbotron">

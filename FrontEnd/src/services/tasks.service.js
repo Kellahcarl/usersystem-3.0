@@ -21,13 +21,13 @@ export default {
       description,
       duration,
     };
-    const { data } = await axios.post(BASE_URL + "/tasks", task, {
+    const { data: message } = await axios.post(BASE_URL + "/tasks", task, {
       headers: {
         ContentType: "application/json",
         Authorization: `Bearer ${user.token}`,
       },
     });
-    return data;
+    return message;
   },
   updateTask: async (
     task_id,
@@ -47,16 +47,16 @@ export default {
       description,
       duration,
     };
-    const { data } = await axios.put(BASE_URL + "/tasks", task, {
+    const { data: message } = await axios.put(BASE_URL + "/tasks", task, {
       headers: {
         ContentType: "application/json",
         Authorization: `Bearer ${user.token}`,
       },
     });
-    return data;
+    return message;
   },
   getAllTasks: async (project_id) => {
-    const { data } = await axios.get(BASE_URL + "/tasks", {
+    const { data: message } = await axios.get(BASE_URL + "/tasks", {
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
@@ -64,7 +64,7 @@ export default {
     return data;
   },
   getSingleTask: async (project_id, task_id) => {
-    const { data } = await axios.get(
+    const { data: message } = await axios.get(
       BASE_URL + "/tasks/" + project_id + "/",
       task_id,
       {
@@ -73,54 +73,73 @@ export default {
         },
       }
     );
-    return data;
+    return message;
   },
   getassignedUser: async (task_id) => {
-    const { data } = await axios.get(BASE_URL + "/tasks/assign/" + task_id, {
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
-    return data;
+    const { data: message } = await axios.get(
+      BASE_URL + "/tasks/assign/" + task_id,
+      {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
+    return message;
   },
   assignUserTask: async (project_id, task_id, user_id) => {
     assignUser = { project_id, task_id, user_id };
-    const { data } = await axios.post(BASE_URL + "/tasks/assign/", assignUser, {
-      headers: {
-        ContentType: "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
-    return data;
+    const { data: message } = await axios.post(
+      BASE_URL + "/tasks/assign/",
+      assignUser,
+      {
+        headers: {
+          ContentType: "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
+    return message;
   },
   unAssignUserTask: async (project_id, task_id) => {
     taskInfo = { project_id, task_id };
-    const { data } = await axios.post(BASE_URL + "/tasks/unassign/", taskInfo, {
-      headers: {
-        ContentType: "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
-    return data;
+    const { data: message } = await axios.post(
+      BASE_URL + "/tasks/unassign/",
+      taskInfo,
+      {
+        headers: {
+          ContentType: "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
+    return message;
   },
   deleteTask: async (project_id) => {
     project_id = { project_id };
-    const { data } = await axios.post(BASE_URL + "/tasks/delete/", project_id, {
-      headers: {
-        ContentType: "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
-    return data;
+    const { data: message } = await axios.post(
+      BASE_URL + "/tasks/delete/",
+      project_id,
+      {
+        headers: {
+          ContentType: "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
+    return message;
   },
   completeTask: async (project_id, task_id) => {
     task = { project_id, task_id };
-    const { data } = await axios.post(BASE_URL + "/tasks/complete/", task, {
-      headers: {
-        ContentType: "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
-    return data;
+    const { data: message } = await axios.post(
+      BASE_URL + "/tasks/complete/",
+      task,
+      {
+        headers: {
+          ContentType: "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
+    return message;
   },
 };

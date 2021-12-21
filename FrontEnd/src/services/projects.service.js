@@ -11,13 +11,13 @@ export const createProject = async (
   description
 ) => {
   let project = { name, client_name, start_date, end_date, description };
-  const { data } = await axios.post(BASE_URL + "/projects", project, {
+  const { data: message } = await axios.post(BASE_URL + "/projects", project, {
     headers: {
       ContentType: "application/json",
       Authorization: `Bearer ${user.token}`,
     },
   });
-  return data;
+  return message;
 };
 export const updateProject = async (
   project_id,
@@ -35,32 +35,35 @@ export const updateProject = async (
     end_date,
     description,
   };
-  const { data } = await axios.put(BASE_URL + "/projects", project, {
+  const { data: message } = await axios.put(BASE_URL + "/projects", project, {
     headers: {
       ContentType: "application/json",
       Authorization: `Bearer ${user.token}`,
     },
   });
-  return data;
+  return message;
 };
 export const getAllProjects = async () => {
-  const { data } = await axios.get(BASE_URL + "/projects", {
+  const { data: message } = await axios.get(BASE_URL + "/projects", {
     headers: {
       Authorization: `Bearer ${user.token}`,
     },
   });
-  return data.projects;
+  return message;
 };
 export const getSingleProject = async (project_id) => {
-  const { data } = await axios.get(BASE_URL + "/projects/" + project_id, {
-    headers: {
-      Authorization: `Bearer ${user.token}`,
-    },
-  });
-  return data;
+  const { data: message } = await axios.get(
+    BASE_URL + "/projects/" + project_id,
+    {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    }
+  );
+  return message;
 };
 export const getassignedUser = async (project_id) => {
-  const { data } = await axios.get(
+  const { data: message } = await axios.get(
     BASE_URL + "/projects/assign/" + project_id,
     {
       headers: {
@@ -68,11 +71,11 @@ export const getassignedUser = async (project_id) => {
       },
     }
   );
-  return data;
+  return message;
 };
 export const assignUserProject = async (project_id, user_id) => {
   const assignUser = { project_id, user_id };
-  const { data } = await axios.post(
+  const { data: message } = await axios.post(
     BASE_URL + "/projects/assign/",
     assignUser,
     {
@@ -82,11 +85,11 @@ export const assignUserProject = async (project_id, user_id) => {
       },
     }
   );
-  return data;
+  return message;
 };
 export const unAssignUserProject = async (project_id) => {
   project_id = { project_id };
-  const { data } = await axios.post(
+  const { data: message } = await axios.post(
     BASE_URL + "/projects/unassign/",
     project_id,
     {
@@ -96,11 +99,11 @@ export const unAssignUserProject = async (project_id) => {
       },
     }
   );
-  return data;
+  return message;
 };
 export const deleteProject = async (project_id) => {
   project_id = { project_id };
-  const { data } = await axios.post(
+  const { data: message } = await axios.post(
     BASE_URL + "/projects/delete/",
     project_id,
     {
@@ -110,5 +113,5 @@ export const deleteProject = async (project_id) => {
       },
     }
   );
-  return data;
+  return message;
 };

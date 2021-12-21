@@ -13,7 +13,6 @@ export const getProjects = () => async (dispatch) => {
   try {
     dispatch({ type: GET_PROJECTS_REQUEST });
 
-    console.log(await getAllProjects());
     dispatch({ type: GET_PROJECTS_SUCCESS, payload: await getAllProjects() });
   } catch (error) {
     console.log(error.message);
