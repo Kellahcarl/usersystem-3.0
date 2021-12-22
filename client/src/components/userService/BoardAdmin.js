@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Dashboard from "../projectModules/Dashboard";
 import { useDispatch, useSelector } from "react-redux";
 
 const BoardAdmin = () => {
@@ -10,7 +9,6 @@ const BoardAdmin = () => {
       <header>
         <strong>admin board</strong>
       </header>
-      <Dashboard />
     </div>
   );
 };
