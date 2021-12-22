@@ -4,7 +4,9 @@ module.exports = {
   authToken: async (req, res, next) => {
     const authHeader = req.headers["authorization"];
 
-    const token = authHeader.split(" ")[1];
+    if (!authHeader) {
+      return res.send(" no token provided");
+    } else token = authHeader.split(" ")[1];
     if (!token)
       return res
         .status(401)

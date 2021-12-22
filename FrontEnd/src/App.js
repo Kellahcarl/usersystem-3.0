@@ -69,7 +69,7 @@ const App = () => {
             {showAdminBoard && (
               <li className="nav-item">
                 <Link to={"/admin"} className="nav-link">
-                  Admin Board
+                  Admin Page
                 </Link>
               </li>
             )}
@@ -77,7 +77,7 @@ const App = () => {
             {currentUser && (
               <li className="nav-item">
                 <Link to={"/user"} className="nav-link">
-                  User
+                  User Page
                 </Link>
               </li>
             )}
@@ -87,7 +87,7 @@ const App = () => {
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={"/profile"} className="nav-link">
-                  {currentUser.username}
+                  {currentUser.user.first}
                 </Link>
               </li>
               <li className="nav-item">
@@ -123,8 +123,6 @@ const App = () => {
             <Route path="/admin" component={BoardAdmin} />
           </Switch>
         </div>
-
-        {/* <AuthVerify logOut={logOut}/> */}
       </div>
     </Router>
   );

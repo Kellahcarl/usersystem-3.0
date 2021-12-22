@@ -1,4 +1,4 @@
-CREATE OR ALTER PROCEDURE dbo.getAssignedProject
+CREATE OR ALTER PROCEDURE dbo.sp_getAssignedProject
 	@project_id varchar(100)
 AS
 BEGIN

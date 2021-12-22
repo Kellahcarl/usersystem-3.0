@@ -1,6 +1,7 @@
 # create task
 POST http://localhost:3002/tasks
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV1Z2VuZWtvcmlyMTJAZ21haWwuY29tIiwiaWQiOiJiMTJjYzVlOS02YjBlLTRiM2QtYmYyZS0wODkxNDlmYWJhZWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDAxNTcwNjIsImV4cCI6MTY0MDI0MzQ2Mn0.4pj35rzRp-Grp40BTqjoN7X6nPugwxOy9U7GyJsg6AU
 
 {
     "project_id":"9c1a40c8-1891-4afa-96b7-703ef8ed4c23",
@@ -13,6 +14,7 @@ Content-Type: application/json
 
 ### get all tasks
 GET http://localhost:3002/tasks/9c1a40c8-1891-4afa-96b7-703ef8ed4c23
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV1Z2VuZWtvcmlyMTJAZ21haWwuY29tIiwiaWQiOiJiMTJjYzVlOS02YjBlLTRiM2QtYmYyZS0wODkxNDlmYWJhZWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDAxNTcwNjIsImV4cCI6MTY0MDI0MzQ2Mn0.4pj35rzRp-Grp40BTqjoN7X6nPugwxOy9U7GyJsg6AU
 
 ### get one task
 
@@ -43,11 +45,12 @@ Content-Type: application/json
 ### assign task
 POST http://localhost:3002/tasks/assign
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV1Z2VuZWtvcmlyMTJAZ21haWwuY29tIiwiaWQiOiJiMTJjYzVlOS02YjBlLTRiM2QtYmYyZS0wODkxNDlmYWJhZWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDAxNTcwNjIsImV4cCI6MTY0MDI0MzQ2Mn0.4pj35rzRp-Grp40BTqjoN7X6nPugwxOy9U7GyJsg6AU
 
 {
     "project_id":"9c1a40c8-1891-4afa-96b7-703ef8ed4c23",
     "task_id":"5b106a26-cfe6-42a7-8cc6-216e6080d54f",
-    "user_id":"4df9ff7f-a9ba-42f9-9b2e-ed2902381d26"
+    "user_id":"b12cc5e9-6b0e-4b3d-bf2e-089149fabaea"
 }
 ### unassign task
 POST  http://localhost:3002/tasks/unassign
@@ -60,6 +63,9 @@ Content-Type: application/json
 
 ### get assigned user
 GET http://localhost:3002/tasks/assign/5b106a26-cfe6-42a7-8cc6-216e6080d54f
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV1Z2VuZWtvcmlyMTJAZ21haWwuY29tIiwiaWQiOiJiMTJjYzVlOS02YjBlLTRiM2QtYmYyZS0wODkxNDlmYWJhZWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDAxNTcwNjIsImV4cCI6MTY0MDI0MzQ2Mn0.4pj35rzRp-Grp40BTqjoN7X6nPugwxOy9U7GyJsg6AU
+
+
 
 ###
 PUT  http://localhost:8082/api/tasks/complete

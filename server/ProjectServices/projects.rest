@@ -34,23 +34,26 @@ Content-Type: application/json
 }
 
 ### get assigned user to look
-GET  http://localhost:3002/projects/assign/3c72eba6-b967-4fee-bb8d-7deed7778908
+GET  http://localhost:3002/projects/assign/4b363d9c-c24f-409f-8bb0-7473a322e18e
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV1Z2VuZWtvcmlyMTJAZ21haWwuY29tIiwiaWQiOiJiMTJjYzVlOS02YjBlLTRiM2QtYmYyZS0wODkxNDlmYWJhZWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDAxNTcwNjIsImV4cCI6MTY0MDI0MzQ2Mn0.4pj35rzRp-Grp40BTqjoN7X6nPugwxOy9U7GyJsg6AU
 
 ### assign project
 POST  http://localhost:3002/projects/assign
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV1Z2VuZWtvcmlyMTJAZ21haWwuY29tIiwiaWQiOiJiMTJjYzVlOS02YjBlLTRiM2QtYmYyZS0wODkxNDlmYWJhZWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDAxNTcwNjIsImV4cCI6MTY0MDI0MzQ2Mn0.4pj35rzRp-Grp40BTqjoN7X6nPugwxOy9U7GyJsg6AU
 
 {
     "project_id":"4b363d9c-c24f-409f-8bb0-7473a322e18e",
-    "user_id":"4df9ff7f-a9ba-42f9-9b2e-ed2902381d26"
+    "user_id":"b12cc5e9-6b0e-4b3d-bf2e-089149fabaea"
 }
 
 ### unassign project look
 POST  http://localhost:3002/projects/unassign
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV1Z2VuZWtvcmlyMTJAZ21haWwuY29tIiwiaWQiOiJiMTJjYzVlOS02YjBlLTRiM2QtYmYyZS0wODkxNDlmYWJhZWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDAxNTcwNjIsImV4cCI6MTY0MDI0MzQ2Mn0.4pj35rzRp-Grp40BTqjoN7X6nPugwxOy9U7GyJsg6AU
 
 {
-    "project_id":"4b363d9c-c24f-409f-8bb0-7473a322e18e"
+    "project_id":"9c1a40c8-1891-4afa-96b7-703ef8ed4c23"
 }
 
 ### delete project
