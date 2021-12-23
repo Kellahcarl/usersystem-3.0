@@ -1,15 +1,36 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { Outlet } from "react-router-dom";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Form,
+  Button,
+  Table,
+} from "react-bootstrap";
+import { withRouter } from "react-router";
+import Sidebar from "../projectModules/sidebar/Sidebar";
+import "../projectModules/index.css";
 
 const BoardAdmin = () => {
-  const dispatch = useDispatch();
-
   return (
-    <div className="container">
-      <header>
-        <strong>admin board</strong>
-      </header>
-    </div>
+    <>
+      <Container fluid>
+        <Col xs={2} id="sidebar-wrapper">
+          <Sidebar />
+        </Col>
+        <Col xs={10} id="page-content-wrapper content">
+          <div className="btns">
+            <Button variant="success">Create </Button>{" "}
+            <Button variant="primary">Update </Button>{" "}
+          </div>
+          <div className="outlet">
+            <Outlet />
+          </div>
+        </Col>
+      </Container>
+    </>
   );
 };
 

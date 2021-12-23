@@ -1,0 +1,8 @@
+.container-fluid {
+  display: flex;
+}
+
+.container-fluid .content .btns {
+  display: flex;
+  flex-direction: row;
+}

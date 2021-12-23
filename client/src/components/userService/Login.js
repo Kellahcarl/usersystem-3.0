@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
@@ -30,6 +30,7 @@ const Login = (props) => {
   const { message } = useSelector((state) => state.message);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate;
 
   const onChangeEmail = (e) => {
     const email = e.target.value;
@@ -63,7 +64,7 @@ const Login = (props) => {
   };
 
   if (isLoggedIn) {
-    return <Redirect to="/profile" />;
+    return navigate("/profile");
   }
 
   return (
