@@ -1,4 +1,11 @@
-import React from "react";
+import React, {
+  createContext,
+  useContext,
+  useRef,
+  useState,
+  useLayoutEffect,
+} from "react";
+import { createBrowserHistory } from "history";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -28,9 +35,10 @@ ReactDOM.render(
             <Route path="users" element={<Getallusers />} />
           </Route>
 
-          <Route path="/register" element={<Register />} />
+          <Route exact path="/register" element={ <Register /> } />
+          <Route exact path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/user" element={<BoardUser />} />
+          <Route exact path="/user" element={<BoardUser />} />
         </Route>
       </Routes>
     </Provider>

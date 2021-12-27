@@ -8,15 +8,8 @@ const Joi = require("joi");
 
 module.exports = {
   getTasks: async (req, res) => {
-    const { project_id } = req.params;
-
     try {
-      let { recordset } = await db.exec("sp_getTasks", { project_id });
-
-      if (recordset.length === 0)
-        return res.status(404).send({
-          message: `No Tasks under Project with project ID: ${project_id}`,
-        });
+      let { recordset } = await db.exec("sp_getTasks");
 
       return res.status(200).send({ tasks: recordset });
     } catch (error) {

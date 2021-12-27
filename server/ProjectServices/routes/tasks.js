@@ -14,7 +14,7 @@ const {
 } = require("../controllers/tasks");
 const { authToken, isAdmin } = require("../middleware/auth");
 
-router.get("/:project_id", authToken, getTasks);
+router.get("/", authToken, getTasks);
 router.get("/assign/:task_Id", authToken, getAssignTask);
 router.get("/:project_id/:task_id", authToken, getTask);
 

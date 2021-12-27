@@ -1,5 +1,4 @@
 CREATE OR ALTER PROCEDURE [dbo].[sp_getTasks]
- @project_id varchar(100)
 as
 
 
@@ -13,5 +12,5 @@ set nocount on;
 			t.end_date,
 			t.description
 	from	[tasks] t 
-	where project_id = @project_id and isDeleted = 0;
+	where isDeleted = 0;
 end;

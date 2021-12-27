@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-const Createptaskt = () => {
+const Createtask = () => {
   const [startDate, setStartDate] = useState(new Date());
   return (
     <div>

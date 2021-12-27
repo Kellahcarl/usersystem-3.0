@@ -1,6 +1,7 @@
 ### create project
 POST http://localhost:3002/projects
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV1Z2VuZWtvcmlyMTJAZ21haWwuY29tIiwiaWQiOiJiMTJjYzVlOS02YjBlLTRiM2QtYmYyZS0wODkxNDlmYWJhZWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDAyNjQxNzIsImV4cCI6MTY0MDM1MDU3Mn0.UNBjPqfYJGgS6Bl-eQV3MYyBQd1MGpLgLdTPUnbziWo
 
 {
     "name":" project1",
@@ -13,6 +14,7 @@ Content-Type: application/json
 ### get all projects
 
 GET http://localhost:3002/projects
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV1Z2VuZWtvcmlyMTJAZ21haWwuY29tIiwiaWQiOiJiMTJjYzVlOS02YjBlLTRiM2QtYmYyZS0wODkxNDlmYWJhZWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDAyNjQxNzIsImV4cCI6MTY0MDM1MDU3Mn0.UNBjPqfYJGgS6Bl-eQV3MYyBQd1MGpLgLdTPUnbziWo
 
 
 ### get single project

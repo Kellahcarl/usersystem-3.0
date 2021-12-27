@@ -10,9 +10,6 @@ import "./App.css";
 import { logout } from "./redux/actions/auth";
 import { clearMessage } from "./redux/actions/message";
 
-import { history } from "./helpers/history";
-
-// import AuthVerify from "./common/AuthVerify";
 import EventBus from "./common/EventBus";
 
 const App = () => {
@@ -48,7 +45,6 @@ const App = () => {
       EventBus.remove("logout");
     };
   }, [currentUser, logOut]);
-  console.log(showAdminBoard);
 
   return (
     <div>
