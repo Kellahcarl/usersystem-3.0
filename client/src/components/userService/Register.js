@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import Select from "react-validation/build/select";
 import { isEmail } from "validator";
 
 import { register } from "../../redux/actions/auth";

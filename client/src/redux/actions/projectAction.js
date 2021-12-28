@@ -1,4 +1,4 @@
-import { getAllProjects } from "../../services/projects.service";
+import { createProject, getAllProjects } from "../../services/projects.service";
 
 import {
   ADD_PROJECT_FAIL,
@@ -20,15 +20,25 @@ export const getProjects = () => async (dispatch) => {
   }
 };
 
-export const addProject = (project) => async (dispatch) => {
-  // console.log(project);
-  try {
-    dispatch({ type: ADD_PROJECT_REQUEST });
-
-    dispatch({ type: ADD_PROJECT_SUCCESS, payload: "animationstart" });
-  } catch (error) {
-    console.log(error.response.data.message);
-    console.log(error.message);
-    dispatch({ type: ADD_PROJECT_FAIL, payload: error.response.data.message });
-  }
-};
+export const addProject =
+  (name, client_name, start_date, end_date, description) =>
+  async (dispatch) => {
+    try {
+      dispatch({
+        type: ADD_PROJECT_SUCCESS,
+        payload: await createProject(
+          name,
+          client_name,
+          start_date,
+          end_date,
+          description
+        ),
+      });
+    } catch (error) {
+      console.log(error.message);
+      dispatch({
+        type: ADD_PROJECT_FAIL,
+        payload: error.message,
+      });
+    }
+  };

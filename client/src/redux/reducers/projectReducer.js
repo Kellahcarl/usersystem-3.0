@@ -1,4 +1,7 @@
 import {
+  ADD_PROJECT_FAIL,
+  ADD_PROJECT_REQUEST,
+  ADD_PROJECT_SUCCESS,
   GET_PROJECTS_FAIL,
   GET_PROJECTS_REQUEST,
   GET_PROJECTS_SUCCESS,
@@ -24,12 +27,18 @@ export const projectReducer = (state = initialState, { type, payload }) => {
         loading: false,
         projects: payload,
       };
-    case GET_PROJECTS_FAIL:
+    
+    case ADD_PROJECT_FAIL:
+      return {
+        ...state,
+        loading: false
+        
+      }
+    case ADD_PROJECT_SUCCESS:
       return {
         ...state,
         loading: false,
-        error: payload,
-      };
+      }
 
     default:
       return state;
