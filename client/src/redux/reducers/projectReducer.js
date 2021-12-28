@@ -2,6 +2,7 @@ import {
   GET_PROJECTS_FAIL,
   GET_PROJECTS_REQUEST,
   GET_PROJECTS_SUCCESS,
+  GET_UNASSIGNED_USERS_PROJECT_REQUEST,
 } from "../types";
 
 const initialState = {
@@ -29,6 +30,7 @@ export const projectReducer = (state = initialState, { type, payload }) => {
         loading: false,
         error: payload,
       };
+
     default:
       return state;
   }

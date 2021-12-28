@@ -64,14 +64,15 @@ export const getSingleProject = async (project_id) => {
 };
 export const getassignedUser = async (project_id) => {
   const { data: message } = await axios.get(
-    BASE_URL + "/projects/assign/" + project_id,
+    BASE_URL + `/projects/assign/${project_id}`,
     {
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
     }
   );
-  return message;
+  console.log(message.User);
+  return message.User;
 };
 export const assignUserProject = async (project_id, user_id) => {
   const assignUser = { project_id, user_id };

@@ -19,7 +19,6 @@ module.exports = {
   },
   getTask: async (req, res) => {
     const { project_id, task_id } = req.params;
-    console.log("wromg");
     try {
       let { recordset } = await db.exec("sp_getTask", {
         project_id,

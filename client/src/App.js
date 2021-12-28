@@ -60,11 +60,28 @@ const App = () => {
           </li>
 
           {showAdminBoard && (
-            <li className="nav-item">
-              <Link to="admin" className="nav-link">
-                Admin Page
-              </Link>
-            </li>
+            <>
+              <li className="nav-item">
+                <Link to="admin" className="nav-link">
+                  Admin Page
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="admin/projects" className="nav-link">
+                  Projects
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="admin/tasks" className="nav-link">
+                  Tasks
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="admin/users" className="nav-link">
+                  Users
+                </Link>
+              </li>
+            </>
           )}
 
           {showUserBoard && (

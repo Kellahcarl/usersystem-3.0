@@ -1,4 +1,6 @@
 CREATE OR ALTER PROCEDURE [dbo].[sp_getTasks]
+(@PageNumber INT = 0,
+@NumberOfRecordsPerPage INT = 100)
 as
 
 
@@ -12,5 +14,10 @@ set nocount on;
 			t.end_date,
 			t.description
 	from	[tasks] t 
-	where isDeleted = 0;
+	where isDeleted = 0
+	ORDER BY t._id
+	OFFSET (@PageNumber * @NumberOfRecordsPerPage) ROWS
+			FETCH NEXT @NumberOfRecordsPerPage ROWS ONLY
+	;
+	
 end;

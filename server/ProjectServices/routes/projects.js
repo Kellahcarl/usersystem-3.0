@@ -16,7 +16,6 @@ const { authToken, isAdmin } = require("../middleware/auth");
 
 router.get("/:project_id", authToken, getProject);
 router.get("/", authToken, getProjects);
-router.get("/assign/:project_id", authToken, getAssignProject);
 
 router.post("/", authToken, isAdmin, createProject);
 router.put("/", authToken, isAdmin, updateProject);

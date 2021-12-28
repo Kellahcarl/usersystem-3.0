@@ -12,6 +12,7 @@ module.exports = {
   getProjects: async (req, res) => {
     try {
       let result = await db.exec("sp_getProjects");
+
       const projects = await parser(result);
       res.status(200).json({ projects });
     } catch (error) {

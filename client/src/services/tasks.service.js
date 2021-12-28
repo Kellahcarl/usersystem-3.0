@@ -60,8 +60,7 @@ export const getAllTasks = async () => {
       Authorization: `Bearer ${user.token}`,
     },
   });
-  console.log(message);
-  return message;
+  return message.tasks;
 };
 export const getSingleTask = async (project_id, task_id) => {
   const { data: message } = await axios.get(

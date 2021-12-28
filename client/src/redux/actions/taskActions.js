@@ -25,12 +25,11 @@ import {
   UNASSIGN_TASK_FAIL,
 } from "../types";
 
-export const getTasks = (user_id) => async (dispatch) => {
+export const getTasks = () => async (dispatch) => {
   try {
     dispatch({ type: GET_TASKS_REQUEST });
-    const { data } = getAllTasks(user_id);
-    dispatch({ type: GET_TASKS_SUCCESS, payload: data });
-    console.log(data);
+
+    dispatch({ type: GET_TASKS_SUCCESS, payload: await getAllTasks() });
   } catch (error) {
     dispatch({ type: GET_TASKS_FAIL, payload: error.message });
   }

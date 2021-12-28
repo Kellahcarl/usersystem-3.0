@@ -1,10 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { getProjects } from "../../../redux/actions/projectAction";
-import { Table } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { getProjects } from "../../redux/actions/projectAction";
 import { useDispatch, useSelector } from "react-redux";
-import Createproject from "./Createproject";
-import { updateProject } from "../../../services/projects.service";
-const Getallprojects = () => {
+
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Form,
+  Button,
+  Table,
+} from "react-bootstrap";
+import { CreateProject } from "./CreateProject";
+import AssignProject from "./AssignProject";
+
+const Projects = () => {
   const dispatch = useDispatch();
   const { projects, loading } = useSelector((state) => state.projects);
 
@@ -12,11 +22,14 @@ const Getallprojects = () => {
     dispatch(getProjects());
   }, [dispatch]);
   let data = projects.projects;
-  // data ? console.log(data) : console.log("empty");
+  data ? console.log(data) : console.log("empty");
+
   return (
-    <div>
-      <Createproject />
-      <updateProject />
+    <Container>
+      <Card>
+        {/* <Button>create Project</Button> */}
+        <CreateProject />
+      </Card>
       {data ? (
         <Table striped borderless responsive="sm" hover>
           <thead>
@@ -26,7 +39,8 @@ const Getallprojects = () => {
               <th>Description</th>
               <th>start date</th>
               <th>end date</th>
-              <th>status</th>
+              <th>Assign</th>
+              <th>Delete!</th>
             </tr>
           </thead>
           <tbody>
@@ -37,7 +51,17 @@ const Getallprojects = () => {
                 <td>{data.description}</td>
                 <td>{data.start_date}</td>
                 <td>{data.end_date}</td>
-                <td>{data.status}</td>
+                <td>
+                  {data.status ? (
+                    <> Assigned</>
+                  ) : (
+                    <AssignProject project_id={data._id} />
+                  )}
+                </td>
+                <td></td>
+                <td>
+                  <i className="bi bi-trash"></i>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -45,8 +69,8 @@ const Getallprojects = () => {
       ) : (
         <h4>data loading</h4>
       )}
-    </div>
+    </Container>
   );
 };
 
-export default Getallprojects;
+export default Projects;

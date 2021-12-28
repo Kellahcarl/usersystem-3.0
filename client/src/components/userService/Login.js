@@ -30,7 +30,7 @@ const Login = (props) => {
   const { message } = useSelector((state) => state.message);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   const onChangeEmail = (e) => {
     const email = e.target.value;
@@ -52,8 +52,8 @@ const Login = (props) => {
     if (checkBtn.current.context._errors.length === 0) {
       dispatch(login(email, password))
         .then(() => {
-          props.history.push("/profile");
-          window.location.reload();
+          navigate("/profile");
+          // window.location.reload();
         })
         .catch(() => {
           setLoading(false);

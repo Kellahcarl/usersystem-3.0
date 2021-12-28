@@ -1,11 +1,5 @@
-import React, {
-  createContext,
-  useContext,
-  useRef,
-  useState,
-  useLayoutEffect,
-} from "react";
-import { createBrowserHistory } from "history";
+import React from "react";
+
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
@@ -19,9 +13,12 @@ import Profile from "./components/userService/Profile";
 import BoardUser from "./components/userService/BoardUser";
 import BoardAdmin from "./components/userService/BoardAdmin";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Getallprojects from "./components/projectModules/Projects/Getallprojects";
-import Getalltasks from "./components/projectModules/tasks/GetallTasks";
-import Getallusers from "./components/projectModules/users/Getallusers";
+import Projects from "./components/projectComponents/projects";
+import Tasks from "./components/taskComponent/tasks";
+import Users from "./components/userComponent/user";
+import { CreateProject } from "./components/projectComponents/CreateProject";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 ReactDOM.render(
   <Router>
@@ -30,15 +27,16 @@ ReactDOM.render(
         <Route path="/" element={<App />}>
           <Route index element={<Home />} />
           <Route path="/admin" element={<BoardAdmin />}>
-            <Route path="projects" element={<Getallprojects />} />
-            <Route path="tasks" element={<Getalltasks />} />
-            <Route path="users" element={<Getallusers />} />
+            <Route path="projects" element={<Projects />} />
+            <Route path="createproject" element={<CreateProject />} />
+            <Route path="tasks" element={<Tasks />} />
+            <Route path="users" element={<Users />} />
           </Route>
 
-          <Route exact path="/register" element={ <Register /> } />
-          <Route exact path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
-          <Route exact path="/user" element={<BoardUser />} />
+          <Route path="/user" element={<BoardUser />} />
         </Route>
       </Routes>
     </Provider>
