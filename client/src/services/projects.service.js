@@ -104,7 +104,7 @@ export const unAssignUserProject = async (project_id) => {
 };
 export const deleteProject = async (project_id) => {
   project_id = { project_id };
-  const { data: message } = await axios.post(
+  const { data: message } = await axios.put(
     BASE_URL + "/projects/delete/",
     project_id,
     {
@@ -114,5 +114,6 @@ export const deleteProject = async (project_id) => {
       },
     }
   );
+  console.log(message);
   return message;
 };

@@ -1,16 +1,11 @@
 import React, { useEffect } from "react";
-import { getProjects } from "../../redux/actions/projectAction";
+import {
+  deleteSingleProject,
+  getProjects,
+} from "../../redux/actions/projectAction";
 import { useDispatch, useSelector } from "react-redux";
 
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Form,
-  Button,
-  Table,
-} from "react-bootstrap";
+import { Container, Card, Button, Table } from "react-bootstrap";
 import { CreateProject } from "./CreateProject";
 import AssignProject from "./AssignProject";
 
@@ -22,7 +17,7 @@ const Projects = () => {
     dispatch(getProjects());
   }, [dispatch]);
   let data = projects.projects;
-  data ? console.log(data) : console.log("empty");
+  // data ? console.log(data) : console.log("empty");
 
   return (
     <Container>
@@ -39,7 +34,6 @@ const Projects = () => {
               <th>Description</th>
               <th>start date</th>
               <th>end date</th>
-              <th>Assign</th>
               <th>Delete!</th>
             </tr>
           </thead>
@@ -52,22 +46,23 @@ const Projects = () => {
                 <td>{data.start_date}</td>
                 <td>{data.end_date}</td>
                 <td>
-                  {data.status ? (
-                    <> Assigned</>
-                  ) : (
-                    <AssignProject project_id={data._id} />
-                  )}
-                </td>
-                <td></td>
-                <td>
-                  <i className="bi bi-trash"></i>
+                  <Button
+                    onClick={() => {
+                      dispatch(deleteSingleProject(data._id));
+                      window.location.reload();
+                    }}
+                  >
+                    <i className="bi bi-trash"></i>
+                  </Button>
                 </td>
               </tr>
             ))}
           </tbody>
         </Table>
       ) : (
-        <h4>data loading</h4>
+        <Card>
+          <h4>No data</h4>
+        </Card>
       )}
     </Container>
   );

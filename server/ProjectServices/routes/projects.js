@@ -5,9 +5,6 @@ const {
   getProjects,
   getProject,
   createProject,
-  assignProject,
-  unassignProject,
-  getAssignProject,
   updateProject,
   deleteProject,
   completeProject,
@@ -19,9 +16,6 @@ router.get("/", authToken, getProjects);
 
 router.post("/", authToken, isAdmin, createProject);
 router.put("/", authToken, isAdmin, updateProject);
-router.get("/assign/:project_id", authToken, getAssignProject);
-router.post("/assign", authToken, isAdmin, assignProject);
-router.post("/unassign", authToken, isAdmin, unassignProject);
 router.put("/delete", authToken, isAdmin, deleteProject);
 router.get("/complete", authToken, isAdmin, completeProject);
 

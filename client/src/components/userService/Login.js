@@ -51,10 +51,10 @@ const Login = (props) => {
 
     if (checkBtn.current.context._errors.length === 0) {
       dispatch(login(email, password))
-        // .then(() => {
-        //   navigate("/profile");
-        //   // window.location.reload();
-        // })
+        .then(() => {
+          navigate("/profile");
+          window.location.reload();
+        })
         .catch(() => {
           setLoading(false);
         });
@@ -64,6 +64,7 @@ const Login = (props) => {
   };
 
   if (isLoggedIn) {
+    console.log(isLoggedIn);
     return navigate("/profile");
   }
 

@@ -88,6 +88,7 @@ function MyVerticallyCenteredModal(props) {
           setSuccessful(false);
         });
     }
+    props.onHide();
   };
 
   return (
@@ -99,7 +100,7 @@ function MyVerticallyCenteredModal(props) {
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Create Project
+          Created Project
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -163,7 +164,9 @@ function MyVerticallyCenteredModal(props) {
               </div>
 
               <div className="form-group">
-                <button className="btn btn-primary btn-block">Submit</button>
+                <button className="btn btn-primary btn-block" type="submit">
+                  Submit
+                </button>
               </div>
             </div>
           )}

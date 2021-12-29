@@ -26,6 +26,7 @@ module.exports = {
       firstname: Joi.string().required(),
       lastname: Joi.string().required(),
       email: Joi.string().email().required(),
+      // phone: Joi.number().required().min(10).max(12),
       password: Joi.string().pattern(
         new RegExp(
           "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$"

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -19,9 +19,11 @@ const App = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
+  const location = useLocation();
+
   // useEffect(() => {
-  //   history.listen((location) => {
-  //     dispatch(clearMessage()); // clear message when changing location
+  //   location.listen((location) => {
+  //     dispatch(clearMessage());
   //   });
   // }, [dispatch]);
 

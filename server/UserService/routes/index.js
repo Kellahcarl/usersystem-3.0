@@ -9,11 +9,17 @@ const {
   forgotPassword,
   resetPassword,
 } = require("../controllers/userAuth");
-const { getUsers, getUser } = require("../controllers/userController");
+const {
+  getUsers,
+  getUser,
+  getUnassignedUsers,
+} = require("../controllers/userController");
+
 const { authToken, isAdmin } = require("../middleware/auth");
 
 router.get("/", authToken, getUsers);
 router.get("/:id", authToken, getUser);
+router.get("/assign", authToken, getUnassignedUsers);
 
 router.post("/register", registerUser);
 router.post("/login", loginUser);

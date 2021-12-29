@@ -1,9 +1,14 @@
-import { createProject, getAllProjects } from "../../services/projects.service";
+import {
+  createProject,
+  deleteProject,
+  getAllProjects,
+} from "../../services/projects.service";
 
 import {
   ADD_PROJECT_FAIL,
-  ADD_PROJECT_REQUEST,
   ADD_PROJECT_SUCCESS,
+  DELETE_PROJECT_FAIL,
+  DELETE_PROJECT_SUCCESS,
   GET_PROJECTS_FAIL,
   GET_PROJECTS_REQUEST,
   GET_PROJECTS_SUCCESS,
@@ -34,6 +39,7 @@ export const addProject =
           description
         ),
       });
+      dispatch(getProjects());
     } catch (error) {
       console.log(error.message);
       dispatch({
@@ -42,3 +48,17 @@ export const addProject =
       });
     }
   };
+export const deleteSingleProject = (project_id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: DELETE_PROJECT_SUCCESS,
+      payload: await deleteProject(project_id),
+    });
+  } catch (error) {
+    console.log(error.message);
+    dispatch({
+      type: DELETE_PROJECT_FAIL,
+      payload: error.message,
+    });
+  }
+};

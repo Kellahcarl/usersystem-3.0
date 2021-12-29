@@ -157,7 +157,6 @@ module.exports = {
   },
   getAssignTask: async (req, res) => {
     const { task_Id } = req.params;
-    console.log("hit");
     try {
       if (!task_Id)
         return res.status(400).send({ message: "Task_id is required" });
@@ -197,6 +196,7 @@ module.exports = {
 
       const id = uuidv4();
       await db.exec("sp_assignTask", { id, task_id, user_id });
+      await db.exec("sp_assignUser", { user_id });
 
       res.send({ message: "User added to task successfully" });
     } catch (error) {
@@ -207,7 +207,7 @@ module.exports = {
     }
   },
   unassignTask: async (req, res) => {
-    const { task_id, project_id } = req.body;
+    const { task_id, project_id, user_id } = req.body;
 
     let result = await db.exec("sp_getTask", {
       project_id,
@@ -218,6 +218,7 @@ module.exports = {
     }
     try {
       await db.exec("sp_unassignTask", { task_id });
+      await db.exec("sp_unassignUser", { user_id });
 
       res.send({ message: "User unassigned task successfully" });
     } catch (error) {
