@@ -7,18 +7,18 @@ const user = JSON.parse(localStorage.getItem("user"));
 export const createTask = async (
   project_id,
   name,
+  duration,
   start_date,
   end_date,
-  description,
-  duration
+  description
 ) => {
   let task = {
     project_id,
     name,
+    duration,
     start_date,
     end_date,
     description,
-    duration,
   };
   const { data: message } = await axios.post(BASE_URL + "/tasks", task, {
     headers: {
@@ -32,10 +32,10 @@ export const updateTask = async (
   task_id,
   project_id,
   name,
+  duration,
   start_date,
   end_date,
-  description,
-  duration
+  description
 ) => {
   let task = {
     task_id,
@@ -52,6 +52,7 @@ export const updateTask = async (
       Authorization: `Bearer ${user.token}`,
     },
   });
+  console.log(message);
   return message;
 };
 export const getAllTasks = async () => {
@@ -86,19 +87,34 @@ export const getassignedUser = async (task_id) => {
   return message;
 };
 export const assignUserTask = async (project_id, task_id, user_id) => {
-  const { data: message } = await assignTask(project_id, task_id, user_id);
-
+  const data = { project_id, task_id, user_id };
+  const { data: message } = await axios.post(BASE_URL + "/tasks/assign", data, {
+    headers: {
+      ContentType: "application/json",
+      Authorization: `Bearer ${user.token}`,
+    },
+  });
+  console.log(message);
   return message;
 };
 export const unAssignUserTask = async (project_id, task_id) => {
   const { data: message } = await unassignTask(project_id, task_id);
   return message;
 };
-export const deleteTask = async (task_id) => {
-  task_id = { task_id };
-  const { data: message } = await axios.post(
-    BASE_URL + "/tasks/delete/",
-    task_id,
+export const deleteTask = async (task_id, project_id) => {
+  const data = { task_id, project_id };
+  const { data: message } = await axios.put(BASE_URL + "/tasks/delete/", data, {
+    headers: {
+      ContentType: "application/json",
+      Authorization: `Bearer ${user.token}`,
+    },
+  });
+  return message;
+};
+export const completeTask = async (task_id) => {
+  const { data: message } = await axios.put(
+    BASE_URL + "/tasks/complete",
+    { task_id },
     {
       headers: {
         ContentType: "application/json",
@@ -108,7 +124,16 @@ export const deleteTask = async (task_id) => {
   );
   return message;
 };
-export const completeTask = async (project_id, task_id) => {
-  const { data: message } = await completeTask(project_id, task_id);
+export const uncompleteTask = async (task_id) => {
+  const { data: message } = await axios.put(
+    BASE_URL + "/tasks/uncomplete",
+    { task_id },
+    {
+      headers: {
+        ContentType: "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
+    }
+  );
   return message;
 };

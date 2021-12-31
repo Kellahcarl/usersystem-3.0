@@ -49,6 +49,7 @@ export const getAllProjects = async () => {
       Authorization: `Bearer ${user.token}`,
     },
   });
+  // console.log(message);
   return message;
 };
 export const getSingleProject = async (project_id) => {
@@ -114,6 +115,5 @@ export const deleteProject = async (project_id) => {
       },
     }
   );
-  console.log(message);
   return message;
 };

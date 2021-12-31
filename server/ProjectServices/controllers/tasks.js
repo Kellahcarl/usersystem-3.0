@@ -41,7 +41,7 @@ module.exports = {
       return res
         .status(400)
         .send({ success: false, message: error.details[0].message });
-
+    console.log(req.body);
     const projectResult = await db.exec("sp_getSingleProject", {
       project_id: req.body.project_id,
     });
@@ -180,9 +180,9 @@ module.exports = {
       const { task_id, user_id, project_id } = req.body;
 
       let result = await db.exec("sp_getTask", {
-        project_id,
         task_id,
       });
+      console.log(result);
       if (result.recordset == "") {
         return res.status(404).send(`no project with Project_id ${project_id}`);
       }
@@ -232,9 +232,35 @@ module.exports = {
   completeTask: async (req, res) => {
     try {
       const { task_id } = req.body;
-      const { project_id } = req.body;
+      console.log(task_id);
       let { recordset } = await db.exec("sp_getTask", {
-        project_id,
+        task_id,
+      });
+
+      const task = recordset[0];
+      console.log(task);
+
+      if (!task) {
+        return res
+          .status(404)
+          .send({ message: "task does not exist or  already deleted" });
+      }
+
+      await db.exec("sp_completeTask", {
+        task_id,
+      });
+      res.status(201).send({ message: "task completed Successfully" });
+    } catch (error) {
+      res
+        .status(500)
+        .send({ error: error.message, message: "Internal Sever Error" });
+    }
+  },
+  unCompleteTask: async (req, res) => {
+    try {
+      const { task_id } = req.body;
+      console.log(task_id);
+      let { recordset } = await db.exec("sp_getTask", {
         task_id,
       });
 
@@ -246,7 +272,7 @@ module.exports = {
           .send({ message: "task does not exist or  already deleted" });
       }
 
-      await db.exec("CompleteTask", {
+      await db.exec("sp_unCompleteTask", {
         task_id,
       });
       res.status(201).send({ message: "task completed Successfully" });

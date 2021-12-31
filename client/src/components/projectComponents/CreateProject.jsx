@@ -198,7 +198,7 @@ export function CreateProject() {
 
   return (
     <>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
+      <Button variant="success" onClick={() => setModalShow(true)}>
         Create Project
       </Button>
 

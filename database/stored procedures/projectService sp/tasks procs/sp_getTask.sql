@@ -1,5 +1,4 @@
 CREATE OR ALTER PROCEDURE [dbo].[sp_getTask]
- @project_id varchar(100),
  @task_id varchar(100)
 as
 
@@ -16,7 +15,8 @@ begin
 			t.isDeleted,
 			t.iscompleted
 	from	[tasks] t 
-	where project_id = @project_id and _id=@task_id and isDeleted = 0;
+	where  _id=@task_id and isDeleted = 0;
 end;
 
 
+select * from tasks

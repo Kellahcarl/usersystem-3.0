@@ -12,7 +12,8 @@ set nocount on;
 			t.duration,
 			t.start_date,
 			t.end_date,
-			t.description
+			t.description,
+			t.isCompleted
 	from	[tasks] t 
 	where isDeleted = 0
 	ORDER BY t._id

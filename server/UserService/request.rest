@@ -67,10 +67,16 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3001/api/auth
-Authorization:  :Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV1Z2VuZWtvcmlyMTJAZ21haWwuY29tIiwiaWQiOiJiMTJjYzVlOS02YjBlLTRiM2QtYmYyZS0wODkxNDlmYWJhZWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDA2NzkwODgsImV4cCI6MTY0MDc2NTQ4OH0.KbPnfnC_DF5k225tT250P_VPxVQzFRgoWBcEIxCCoSM
+Authorization:  :Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV1Z2VuZWtvcmlyMTJAZ21haWwuY29tIiwiaWQiOiJiMTJjYzVlOS02YjBlLTRiM2QtYmYyZS0wODkxNDlmYWJhZWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDA5NDEzNDYsImV4cCI6MTY0MTAyNzc0Nn0.R-OoWIAUW4kWUkAyvrD9wBXaUZjbhdya-7gWCWvycLs
 
 
 ###
 
 GET http://localhost:3001/api/auth/ca394499-97da-478a-903b-f109cba61731
+
+###
+
+GET http://localhost:3001/api/auth/assign
+Authorization:  :Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImV1Z2VuZWtvcmlyMTJAZ21haWwuY29tIiwiaWQiOiJiMTJjYzVlOS02YjBlLTRiM2QtYmYyZS0wODkxNDlmYWJhZWEiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2NDA5NDEzNDYsImV4cCI6MTY0MTAyNzc0Nn0.R-OoWIAUW4kWUkAyvrD9wBXaUZjbhdya-7gWCWvycLs
+
 

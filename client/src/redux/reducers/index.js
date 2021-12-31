@@ -3,7 +3,11 @@ import auth from "./auth";
 import message from "./message";
 import { projectReducer } from "./projectReducer";
 import { taskReducer } from "./taskReducer";
-import { assignedUsers, usersReducer } from "./userReducer";
+import {
+  assignedUsers,
+  unassignedUsersReducer,
+  usersReducer,
+} from "./userReducer";
 
 export default combineReducers({
   auth,
@@ -12,4 +16,5 @@ export default combineReducers({
   tasks: taskReducer,
   users: usersReducer,
   assignedUsers,
+  unassignedUsers: unassignedUsersReducer,
 });

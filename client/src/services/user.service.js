@@ -74,3 +74,13 @@ export const getSingleUser = async (user_id) => {
   });
   return message;
 };
+
+export const getUnassigned = async (user_id) => {
+  const { data: message } = await axios.get(BASE_URL + "/assign", {
+    headers: {
+      Authorization: `Bearer ${user.token}`,
+    },
+  });
+  // console.log(message.users);
+  return message.users;
+};

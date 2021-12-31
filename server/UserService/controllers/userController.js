@@ -14,7 +14,11 @@ module.exports = {
     res.send({ user: recordset[0] });
   },
   getUnassignedUsers: async (req, res) => {
-    let { recordset } = await db.exec("sp_UnassignedUsers");
-    res.send({ users: recordset });
+    try {
+      let { recordset } = await db.exec("sp_UnassignedUsers");
+      res.send({ users: recordset });
+    } catch (error) {
+      res.send(error.message).status(500);
+    }
   },
 };

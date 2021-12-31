@@ -15,7 +15,7 @@ const Users = () => {
   const { users } = useSelector((state) => state.users);
 
   let data = users;
-  data ? console.log(data) : console.log("empty");
+  // data ? console.log(data) : console.log("empty");
   return (
     <Container>
       <Card>

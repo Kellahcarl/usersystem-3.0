@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Container, Card, Button, Table } from "react-bootstrap";
 import { CreateProject } from "./CreateProject";
-import AssignProject from "./AssignProject";
+import UpdateProject from "./UpdateProject";
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -22,11 +22,10 @@ const Projects = () => {
   return (
     <Container>
       <Card>
-        {/* <Button>create Project</Button> */}
         <CreateProject />
       </Card>
       {data ? (
-        <Table striped borderless responsive="sm" hover>
+        <Table striped borderless responsive="lg" hover>
           <thead>
             <tr>
               <th>Project Name</th>
@@ -34,6 +33,7 @@ const Projects = () => {
               <th>Description</th>
               <th>start date</th>
               <th>end date</th>
+              <th>Update</th>
               <th>Delete!</th>
             </tr>
           </thead>
@@ -45,11 +45,13 @@ const Projects = () => {
                 <td>{data.description}</td>
                 <td>{data.start_date}</td>
                 <td>{data.end_date}</td>
+                <td>{<UpdateProject project_id={data._id} />}</td>
                 <td>
                   <Button
+                    variant="danger"
                     onClick={() => {
                       dispatch(deleteSingleProject(data._id));
-                      window.location.reload();
+                      // window.location.reload();
                     }}
                   >
                     <i className="bi bi-trash"></i>

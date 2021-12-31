@@ -2,7 +2,9 @@ import {
   createProject,
   deleteProject,
   getAllProjects,
+  updateProject,
 } from "../../services/projects.service";
+import { updateTask } from "../../services/tasks.service";
 
 import {
   ADD_PROJECT_FAIL,
@@ -12,13 +14,16 @@ import {
   GET_PROJECTS_FAIL,
   GET_PROJECTS_REQUEST,
   GET_PROJECTS_SUCCESS,
+  UPDATE_PROJECT_FAIL,
+  UPDATE_PROJECT_REQUEST,
+  UPDATE_PROJECT_SUCCESS,
 } from "../types";
 
 export const getProjects = () => async (dispatch) => {
   try {
     dispatch({ type: GET_PROJECTS_REQUEST });
-
-    dispatch({ type: GET_PROJECTS_SUCCESS, payload: await getAllProjects() });
+    const data = await getAllProjects();
+    dispatch({ type: GET_PROJECTS_SUCCESS, payload: data });
   } catch (error) {
     console.log(error.message);
     dispatch({ type: GET_PROJECTS_FAIL, payload: error.message });
@@ -54,6 +59,7 @@ export const deleteSingleProject = (project_id) => async (dispatch) => {
       type: DELETE_PROJECT_SUCCESS,
       payload: await deleteProject(project_id),
     });
+    dispatch(getProjects());
   } catch (error) {
     console.log(error.message);
     dispatch({
@@ -62,3 +68,28 @@ export const deleteSingleProject = (project_id) => async (dispatch) => {
     });
   }
 };
+
+export const UpdateSingleProject =
+  (project_id, name, client_name, start_date, end_date, description) =>
+  async (dispatch) => {
+    try {
+      dispatch({ type: UPDATE_PROJECT_REQUEST });
+      dispatch({
+        type: UPDATE_PROJECT_SUCCESS,
+        payload: await updateProject(
+          project_id,
+          name,
+          client_name,
+          start_date,
+          end_date,
+          description
+        ),
+      });
+      dispatch(getProjects());
+    } catch (error) {
+      dispatch({
+        type: UPDATE_PROJECT_FAIL,
+        payload: error.message,
+      });
+    }
+  };
