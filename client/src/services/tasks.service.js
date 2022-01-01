@@ -86,21 +86,30 @@ export const getassignedUser = async (task_id) => {
   );
   return message;
 };
-export const assignUserTask = async (project_id, task_id, user_id) => {
-  const data = { project_id, task_id, user_id };
-  const { data: message } = await axios.post(BASE_URL + "/tasks/assign", data, {
+export const assignUserTask = async (task_id, user_id) => {
+  const info = { task_id, user_id };
+  const { data: message } = await axios.post(BASE_URL + "/tasks/assign", info, {
     headers: {
       ContentType: "application/json",
       Authorization: `Bearer ${user.token}`,
     },
   });
-  console.log(message);
   return message;
 };
-export const unAssignUserTask = async (project_id, task_id) => {
-  const { data: message } = await unassignTask(project_id, task_id);
+export const unAssignUserTask = async (task_id) => {
+  const { data: message } = await axios.post(
+    BASE_URL + "/tasks/unassign",
+    { task_id },
+    {
+      headers: {
+        ContentType: "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
+    }
+  );
   return message;
 };
+
 export const deleteTask = async (task_id, project_id) => {
   const data = { task_id, project_id };
   const { data: message } = await axios.put(BASE_URL + "/tasks/delete/", data, {

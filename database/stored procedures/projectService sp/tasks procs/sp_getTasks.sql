@@ -13,6 +13,7 @@ set nocount on;
 			t.start_date,
 			t.end_date,
 			t.description,
+			t.assigned,
 			t.isCompleted
 	from	[tasks] t 
 	where isDeleted = 0

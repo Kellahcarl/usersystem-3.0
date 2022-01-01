@@ -41,7 +41,6 @@ module.exports = {
       return res
         .status(400)
         .send({ success: false, message: error.details[0].message });
-    console.log(req.body);
     const projectResult = await db.exec("sp_getSingleProject", {
       project_id: req.body.project_id,
     });
@@ -72,7 +71,6 @@ module.exports = {
     try {
       const { task_id, project_id } = req.body;
       let { recordset } = await db.exec("sp_getTask", {
-        project_id,
         task_id,
       });
 
@@ -177,28 +175,27 @@ module.exports = {
         .send({ success: false, message: error.details[0].message });
 
     try {
-      const { task_id, user_id, project_id } = req.body;
+      const { task_id, user_id } = req.body;
 
       let result = await db.exec("sp_getTask", {
         task_id,
       });
-      console.log(result);
+
       if (result.recordset == "") {
-        return res.status(404).send(`no project with Project_id ${project_id}`);
+        return res.status(404).send({ message: "task doesnt exist" });
       }
 
-      checkassign = await db.exec("sp_checkassignedTask", { user_id });
+      const { recordset } = await db.exec("sp_checkassignedTask", { user_id });
 
-      if (checkassign.recordset.length > 0) {
-        let data = checkassign.recordset[0].task_id;
-        return res.status(404).send(`user already assigned ${data}`);
+      if (recordset[0]) {
+        return res.status(404).send({ message: "user already assigned" });
       }
-
       const id = uuidv4();
       await db.exec("sp_assignTask", { id, task_id, user_id });
       await db.exec("sp_assignUser", { user_id });
+      await db.exec("sp_assigntaskuser", { task_id });
 
-      res.send({ message: "User added to task successfully" });
+      res.status(200).send({ message: "User added to task successfully" });
     } catch (error) {
       console.log(error.message);
       res
@@ -207,18 +204,26 @@ module.exports = {
     }
   },
   unassignTask: async (req, res) => {
-    const { task_id, project_id, user_id } = req.body;
+    const { task_id } = req.body;
 
     let result = await db.exec("sp_getTask", {
-      project_id,
       task_id,
     });
     if (result.recordset == "") {
-      return res.status(404).send(`no project with Project_id ${project_id}`);
+      return res.status(404).send({ message: " task doesnt exist" });
     }
+
+    let user = await db.exec("getAssignedUser", { task_id });
+    if (!user.recordset[0]) {
+      return res.status(404).send({ message: "user already unassigned" });
+    }
+
+    const user_id = user.recordset[0].uid;
+
     try {
       await db.exec("sp_unassignTask", { task_id });
       await db.exec("sp_unassignUser", { user_id });
+      await db.exec("sp_unassigntaskuser", { task_id });
 
       res.send({ message: "User unassigned task successfully" });
     } catch (error) {
@@ -232,13 +237,11 @@ module.exports = {
   completeTask: async (req, res) => {
     try {
       const { task_id } = req.body;
-      console.log(task_id);
       let { recordset } = await db.exec("sp_getTask", {
         task_id,
       });
 
       const task = recordset[0];
-      console.log(task);
 
       if (!task) {
         return res
@@ -259,7 +262,6 @@ module.exports = {
   unCompleteTask: async (req, res) => {
     try {
       const { task_id } = req.body;
-      console.log(task_id);
       let { recordset } = await db.exec("sp_getTask", {
         task_id,
       });

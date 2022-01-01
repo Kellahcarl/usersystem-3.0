@@ -1,8 +1,5 @@
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE   PROCEDURE [dbo].[sp_assignTask]
+
+CREATE OR ALTER  PROCEDURE [dbo].[sp_assignTask]
 	@id varchar(100),
 	@task_id varchar(100),
 	@user_id varchar(100)
@@ -12,8 +9,10 @@ set nocount on;
 
 begin
 	INSERT INTO dbo.AssignedTasks
-	(_id,user_id,task_id,assign_status)
+	(_id,user_id,task_id)
 	VALUES
-	(@id, @user_id, @task_id, 1);
+	(@id, @user_id, @task_id);
 end;
 GO
+
+

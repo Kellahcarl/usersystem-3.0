@@ -33,7 +33,6 @@ module.exports = {
   },
   validateAssignTask: (body) => {
     const schema = Joi.object().keys({
-      project_id: Joi.string().required(),
       task_id: Joi.string().required(),
       user_id: Joi.string().required(),
     });

@@ -3,10 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Modal } from "react-bootstrap";
 
 import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import Select from "react-validation/build/select";
-import { getProjects } from "../../redux/actions/projectAction";
 import { getUnAssignedUsers } from "../../redux/actions/userAction";
 import { assignTask } from "../../redux/actions/taskActions";
 
@@ -41,7 +39,6 @@ function MyVerticallyCenteredModal(props) {
 
     setUser_id(user);
   };
-  const project_id = props.project_id;
   const task_id = props.task_id;
 
   // console.log(project_id, task_id);
@@ -49,12 +46,11 @@ function MyVerticallyCenteredModal(props) {
   const handleCreateTask = (e) => {
     e.preventDefault();
 
-    console.log(user_id);
     setSuccessful(false);
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      dispatch(assignTask(project_id, task_id, user_id))
+      dispatch(assignTask(task_id, user_id))
         .then(() => {
           setSuccessful(true);
         })
@@ -90,6 +86,7 @@ function MyVerticallyCenteredModal(props) {
                   onChange={onChangeUser}
                   validations={[required]}
                 >
+                  <option value=""> click to select user</option>
                   {users ? (
                     users.map((user) => (
                       <option key={user._id} value={user._id}>
@@ -144,7 +141,6 @@ export function AssignTask({ project_id, task_id }) {
       <MyVerticallyCenteredModal
         show={modalShow}
         onHide={() => setModalShow(false)}
-        project_id={project_id}
         task_id={task_id}
       />
     </>

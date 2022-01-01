@@ -5,18 +5,11 @@ import {
   completeSingleTask,
   deleteSingleTask,
   getTasks,
+  unassignTask,
   unCompleteSingleTask,
 } from "../../redux/actions/taskActions";
 
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Form,
-  Button,
-  Table,
-} from "react-bootstrap";
+import { Container, Card, Button, Table } from "react-bootstrap";
 import { CreateTask } from "./CreateTask";
 import { UpdateTask } from "./UpdateTask";
 import { AssignTask } from "./AssignTask";
@@ -38,7 +31,7 @@ const Tasks = () => {
         <CreateTask />
       </Card>
       {data ? (
-        <Table striped borderless responsive="sm" hover>
+        <Table striped borderless responsive="lg" hover>
           <thead>
             <tr>
               <th>Task Name</th>
@@ -58,8 +51,8 @@ const Tasks = () => {
                 <td>{data.name}</td>
                 <td>{data.duration}</td>
                 <td>{data.description}</td>
-                <td>{moment.utc(data.start_date).format("MM/DD/YY")}</td>
-                <td>{moment.utc(data.end_date).format("MM/DD/YY")}</td>
+                <td>{moment.utc(data.start_date).format("DD/MM/YY")}</td>
+                <td>{moment.utc(data.end_date).format("DD/MM/YY")}</td>
                 <td>
                   <UpdateTask project_id={data.project_id} task_id={data._id} />
                 </td>
@@ -85,7 +78,20 @@ const Tasks = () => {
                   )}
                 </td>
                 <td>
-                  <AssignTask project_id={data.project_id} task_id={data._id} />
+                  {data.assigned ? (
+                    <Button
+                      onClick={() => {
+                        dispatch(unassignTask(data._id));
+                      }}
+                    >
+                      Unassign
+                    </Button>
+                  ) : (
+                    <AssignTask
+                      project_id={data.project_id}
+                      task_id={data._id}
+                    />
+                  )}
                 </td>
                 <td>
                   <Button

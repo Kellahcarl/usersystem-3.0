@@ -8,5 +8,6 @@ CREATE TABLE tasks (
 	end_date DATE NOT NULL,
 	isDeleted BIT NOT NULL,
 	isCompleted BIT NOT NULL,
+	[assigned] BIT NULL ,
 	FOREIGN KEY (project_id) REFERENCES projects (_id) ON DELETE CASCADE ON UPDATE CASCADE
 )

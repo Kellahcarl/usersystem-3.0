@@ -62,9 +62,7 @@ const Projects = () => {
           </tbody>
         </Table>
       ) : (
-        <Card>
-          <h4>No data</h4>
-        </Card>
+        <h4>No data</h4>
       )}
     </Container>
   );

@@ -7,6 +7,7 @@ import {
   deleteTask,
   completeTask,
   uncompleteTask,
+  unAssignUserTask,
 } from "../../services/tasks.service";
 import {
   ADD_PROJECT_SUCCESS,
@@ -67,10 +68,8 @@ export const addTask =
 export const assignTask =
   (project_id, task_id, user_id) => async (dispatch) => {
     try {
-      console.log("here");
       dispatch({ type: ASSIGN_TASK_REQUEST });
       const data = await assignUserTask(project_id, task_id, user_id);
-
       dispatch({ type: ASSIGN_TASK_SUCCESS, payload: data });
       dispatch(getTasks());
     } catch (error) {
@@ -81,15 +80,14 @@ export const assignTask =
     }
   };
 
-export const unassignTask = (project_id, task_id) => async (dispatch) => {
+export const unassignTask = (task_id) => async (dispatch) => {
   try {
     dispatch({ type: UNASSIGN_TASK_REQUEST });
-    const { data } = getSingleTask(project_id, task_id);
-    // console.log(data);
+    const { data } = await unAssignUserTask(task_id);
     dispatch({ type: UNASSIGN_TASK_SUCCESS, payload: data });
     dispatch(getTasks());
   } catch (error) {
-    // console.log(error.response.data.message);
+    console.log(error.message);
     dispatch({
       type: UNASSIGN_TASK_FAIL,
       payload: error.response.data.message,

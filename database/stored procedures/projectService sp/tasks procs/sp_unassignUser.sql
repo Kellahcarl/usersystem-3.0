@@ -1,4 +1,4 @@
-CREATE OR ALTER  PROCEDURE [dbo].[sp_assignUser]
+CREATE OR ALTER  PROCEDURE [dbo].[sp_unassignUser]
     @user_id varchar(100)
 
 as
