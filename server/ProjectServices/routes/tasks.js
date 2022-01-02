@@ -12,11 +12,13 @@ const {
   completeTask,
   getAssignTask,
   unCompleteTask,
+  getAssignTasks,
 } = require("../controllers/tasks");
 const { authToken, isAdmin } = require("../middleware/auth");
 
 router.get("/", authToken, getTasks);
 router.get("/assign/:task_Id", authToken, getAssignTask);
+router.get("/tasks/:project_id", authToken, getAssignTasks);
 router.get("/:project_id/:task_id", authToken, getTask);
 
 router.post("/", authToken, isAdmin, createTask);

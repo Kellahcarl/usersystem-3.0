@@ -8,6 +8,7 @@ import {
   completeTask,
   uncompleteTask,
   unAssignUserTask,
+  getTaskOfProject,
 } from "../../services/tasks.service";
 import {
   ADD_PROJECT_SUCCESS,
@@ -33,6 +34,9 @@ import {
   UPDATE_TASK_FAIL,
   UNCOMPLETE_TASK_SUCCESS,
   UNCOMPLETE_TASK_FAIL,
+  GET_TASKSOFPROJECT_REQUEST,
+  GET_TASKSOFPROJECT_SUCCESS,
+  GET_TASKSOFPROJECT_FAIL,
 } from "../types";
 
 export const getTasks = () => async (dispatch) => {
@@ -159,6 +163,22 @@ export const unCompleteSingleTask = (task_id) => async (dispatch) => {
     console.log(error.message);
     dispatch({
       type: UNCOMPLETE_TASK_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+export const getTaskOFProject = (project_id) => async (dispatch) => {
+  try {
+    dispatch({ type: GET_TASKSOFPROJECT_REQUEST });
+    dispatch({
+      type: GET_TASKSOFPROJECT_SUCCESS,
+      payload: await getTaskOfProject(project_id),
+    });
+    dispatch(getTasks());
+  } catch (error) {
+    console.log(error.message);
+    dispatch({
+      type: GET_TASKSOFPROJECT_FAIL,
       payload: error.response.data.message,
     });
   }

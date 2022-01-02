@@ -284,4 +284,19 @@ module.exports = {
         .send({ error: error.message, message: "Internal Sever Error" });
     }
   },
+  getAssignTasks: async (req, res) => {
+    const { project_id } = req.params;
+    if (!project_id) return res.status(400).send({ message: "Id is required" });
+
+    try {
+      let { recordset } = await db.exec("sp_getTasksOfProject", {
+        project_id,
+      });
+      res.status(200).send({ tasks: recordset });
+    } catch (error) {
+      res
+        .status(500)
+        .send({ error: error.message, message: "Internal Sever Error" });
+    }
+  },
 };

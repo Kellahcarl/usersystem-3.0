@@ -33,7 +33,9 @@ const Projects = () => {
               <th>Description</th>
               <th>start date</th>
               <th>end date</th>
+              <th></th>
               <th>Update</th>
+
               <th>Delete!</th>
             </tr>
           </thead>
@@ -45,6 +47,9 @@ const Projects = () => {
                 <td>{data.description}</td>
                 <td>{data.start_date}</td>
                 <td>{data.end_date}</td>
+                <td>
+                  <Button>view tasks</Button>
+                </td>
                 <td>{<UpdateProject project_id={data._id} />}</td>
                 <td>
                   <Button

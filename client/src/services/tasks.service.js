@@ -146,3 +146,15 @@ export const uncompleteTask = async (task_id) => {
   );
   return message;
 };
+export const getTaskOfProject = async (project_id) => {
+  const { data: message } = await axios.get(
+    BASE_URL + `/tasks/tasks/${project_id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    }
+  );
+  console.log(message);
+  return message;
+};
