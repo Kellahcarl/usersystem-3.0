@@ -21,6 +21,16 @@ export const taskReducer = (state = initialState, { type, payload }) => {
       return { ...state, loading: false, tasks: payload };
     case GET_TASKS_FAIL:
       return { ...state, loading: false, error: payload };
+    default:
+      return state;
+  }
+};
+
+export const taskOfProjectReducer = (
+  state = initialState,
+  { type, payload }
+) => {
+  switch (type) {
     case GET_TASKSOFPROJECT_REQUEST:
       return { ...state, loading: true };
     case GET_TASKSOFPROJECT_SUCCESS:

@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Container, Card, Button, Table } from "react-bootstrap";
 import { CreateProject } from "./CreateProject";
 import UpdateProject from "./UpdateProject";
+import { ViewTaskOfProject } from "./TasksOfProject";
 
 const Projects = () => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const Projects = () => {
               <th>Description</th>
               <th>start date</th>
               <th>end date</th>
-              <th></th>
+              <th>tasks</th>
               <th>Update</th>
 
               <th>Delete!</th>
@@ -48,7 +49,7 @@ const Projects = () => {
                 <td>{data.start_date}</td>
                 <td>{data.end_date}</td>
                 <td>
-                  <Button>view tasks</Button>
+                  <ViewTaskOfProject project_id={data._id} />
                 </td>
                 <td>{<UpdateProject project_id={data._id} />}</td>
                 <td>

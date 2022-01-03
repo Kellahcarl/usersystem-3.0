@@ -2,7 +2,7 @@ import { combineReducers } from "redux";
 import auth from "./auth";
 import message from "./message";
 import { projectReducer } from "./projectReducer";
-import { taskReducer } from "./taskReducer";
+import { taskOfProjectReducer, taskReducer } from "./taskReducer";
 import {
   assignedUsers,
   unassignedUsersReducer,
@@ -17,4 +17,5 @@ export default combineReducers({
   users: usersReducer,
   assignedUsers,
   unassignedUsers: unassignedUsersReducer,
+  tasksOfProject: taskOfProjectReducer,
 });

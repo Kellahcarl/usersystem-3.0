@@ -155,6 +155,5 @@ export const getTaskOfProject = async (project_id) => {
       },
     }
   );
-  console.log(message);
-  return message;
+  return message.tasks;
 };
