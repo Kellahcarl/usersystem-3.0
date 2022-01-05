@@ -64,11 +64,6 @@ const App = () => {
           {showAdminBoard && (
             <>
               <li className="nav-item">
-                <Link to="admin" className="nav-link">
-                  Admin Page
-                </Link>
-              </li>
-              <li className="nav-item">
                 <Link to="admin/projects" className="nav-link">
                   Projects
                 </Link>

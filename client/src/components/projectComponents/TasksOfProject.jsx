@@ -9,7 +9,7 @@ function MyVerticallyCenteredModal(props) {
   const dispatch = useDispatch();
   const { tasks } = useSelector((state) => state.tasksOfProject);
   const data = tasks;
-  console.log(data);
+
   useEffect(() => {
     dispatch(getTaskOFProject(props.project_id));
   }, [dispatch]);
@@ -17,7 +17,7 @@ function MyVerticallyCenteredModal(props) {
   return (
     <Modal
       {...props}
-      size="sm"
+      size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
@@ -28,7 +28,7 @@ function MyVerticallyCenteredModal(props) {
       </Modal.Header>
       <Modal.Body>
         {data ? (
-          <Table striped borderless responsive="lg" hover>
+          <Table striped borderless responsive="md" hover>
             <thead>
               <tr>
                 <th>Task Name</th>
@@ -36,10 +36,6 @@ function MyVerticallyCenteredModal(props) {
                 <th>Description</th>
                 <th>start date</th>
                 <th>end date</th>
-                <th>Update</th>
-                <th>Complete</th>
-                <th>assign</th>
-                <th>delete</th>
               </tr>
             </thead>
             <tbody>
@@ -50,61 +46,6 @@ function MyVerticallyCenteredModal(props) {
                   <td>{data.description}</td>
                   <td>{moment.utc(data.start_date).format("DD/MM/YY")}</td>
                   <td>{moment.utc(data.end_date).format("DD/MM/YY")}</td>
-                  <td>
-                    {/* <UpdateTask
-                      project_id={data.project_id}
-                      task_id={data._id}
-                    /> */}
-                    Update task
-                  </td>
-                  <td>
-                    {data.isCompleted ? (
-                      <Button
-                        variant="primary"
-                        //   onClick={() => {
-                        //     dispatch(unCompleteSingleTask(data._id));
-                        //   }}
-                      >
-                        UnComplete
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="success"
-                        //   onClick={() => {
-                        //     dispatch(completeSingleTask(data._id));
-                        //   }}
-                      >
-                        complete
-                      </Button>
-                    )}
-                  </td>
-                  <td>
-                    {data.assigned ? (
-                      <Button
-                      //   onClick={() => {
-                      //     dispatch(unassignTask(data._id));
-                      //   }}
-                      >
-                        Unassign
-                      </Button>
-                    ) : (
-                      // <AssignTask
-                      //   project_id={data.project_id}
-                      //   task_id={data._id}
-                      // />
-                      <Button>assign</Button>
-                    )}
-                  </td>
-                  <td>
-                    <Button
-                      variant="danger"
-                      // onClick={() => {
-                      //   dispatch(deleteSingleTask(data._id, data.project_id));
-                      // }}
-                    >
-                      <i className="bi bi-trash"></i>
-                    </Button>
-                  </td>
                 </tr>
               ))}
             </tbody>

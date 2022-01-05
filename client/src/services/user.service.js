@@ -81,6 +81,5 @@ export const getUnassigned = async (user_id) => {
       Authorization: `Bearer ${user.token}`,
     },
   });
-  // console.log(message.users);
   return message.users;
 };

@@ -28,7 +28,7 @@ const vname = (value) => {
   }
 };
 const vdescription = (value) => {
-  if (value.length < 3 || value.length > 20) {
+  if (value.length < 3 || value.length > 500) {
     return (
       <div className="alert alert-danger" role="alert">
         The name must be between 3 and 20 characters!
@@ -132,6 +132,7 @@ function MyVerticallyCenteredModal(props) {
                   onChange={onChangeProject}
                   validations={[required]}
                 >
+                  <option value=""> choose Project</option>
                   {data ? (
                     data.map((data) => (
                       <option key={data._id} value={data._id}>

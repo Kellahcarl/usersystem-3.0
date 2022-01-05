@@ -10,14 +10,15 @@ begin
 	from	[users] u 
     where Assigned = 0
 end;
+GO
 
 exec sp_UnassignedUsers
 
 
 -- Delete rows from table '[AssignedTasks]' in schema '[dbo]'
 -- Update rows in table '[users]' in schema '[dbo]'
-UPDATE [dbo].[users]
-SET
-	Assigned = 0
+-- UPDATE [dbo].[users]
+-- SET
+-- 	Assigned = 0
 
-GO
+-- GO

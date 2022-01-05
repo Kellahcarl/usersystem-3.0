@@ -289,7 +289,7 @@ module.exports = {
     if (!project_id) return res.status(400).send({ message: "Id is required" });
 
     try {
-      let { recordset } = await db.exec("sp_getTasksOfProject", {
+      let { recordset } = await db.exec("sp_getProjectTasks", {
         project_id,
       });
       res.status(200).send({ tasks: recordset });
