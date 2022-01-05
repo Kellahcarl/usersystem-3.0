@@ -7,7 +7,7 @@ CREATE TABLE users (
 	email varchar(250) NOT NULL,
 	isDeleted BIT NOT NULL,
 	Assigned BIT NULL,
-	phone VARCHAR(10) NOT NULL,
+	phone VARCHAR(10)  NULL,
 	isAdmin BIT NOT NULL,
 	password varchar(250) NOT NULL,
 )

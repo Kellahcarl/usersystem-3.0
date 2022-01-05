@@ -10,9 +10,9 @@ begin
 end;
 
 -- Insert rows into table 'tasks' in schema '[dbo]'
--- Update rows in table '[TableName]' in schema '[dbo]'
-UPDATE [dbo].[tasks]
-SET
-	assigned = 0
-	-- Add more columns and values here
-GO
+-- -- Update rows in table '[TableName]' in schema '[dbo]'
+-- UPDATE [dbo].[tasks]
+-- SET
+-- 	assigned = 0
+-- 	-- Add more columns and values here
+-- GO
