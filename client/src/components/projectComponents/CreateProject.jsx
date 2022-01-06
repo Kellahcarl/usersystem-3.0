@@ -26,7 +26,7 @@ const vname = (value) => {
   }
 };
 const vdescription = (value) => {
-  if (value.length < 3 || value.length > 20) {
+  if (value.length < 3 || value.length > 500) {
     return (
       <div className="alert alert-danger" role="alert">
         The name must be between 3 and 20 characters!
@@ -88,19 +88,19 @@ function MyVerticallyCenteredModal(props) {
           setSuccessful(false);
         });
     }
-    props.onHide();
+    // props.onHide();
   };
 
   return (
     <Modal
       {...props}
-      size="lg"
+      size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Created Project
+          Create A Project
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -199,7 +199,7 @@ export function CreateProject() {
   return (
     <>
       <Button variant="success" onClick={() => setModalShow(true)}>
-        Create Project
+        Create A Project
       </Button>
 
       <MyVerticallyCenteredModal

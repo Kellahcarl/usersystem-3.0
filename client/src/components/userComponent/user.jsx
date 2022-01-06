@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Container, Card, Button, Table } from "react-bootstrap";
 import { getUsers } from "../../redux/actions/userAction";
-import { CreateUser } from "./CreateUser";
 
 const Users = () => {
   const dispatch = useDispatch();
@@ -18,9 +17,7 @@ const Users = () => {
   // data ? console.log(data) : console.log("empty");
   return (
     <Container>
-      <Card>
-        <CreateUser />
-      </Card>
+      <Card>All System Users</Card>
       {data ? (
         <Table striped borderless responsive="sm" hover>
           <thead>

@@ -26,7 +26,7 @@ const vname = (value) => {
   }
 };
 const vdescription = (value) => {
-  if (value.length < 3 || value.length > 20) {
+  if (value.length < 3 || value.length > 500) {
     return (
       <div className="alert alert-danger" role="alert">
         The name must be between 3 and 20 characters!
@@ -103,7 +103,7 @@ function MyVerticallyCenteredModal(props) {
   return (
     <Modal
       {...props}
-      size="lg"
+      size="md"
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >

@@ -33,7 +33,7 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        {data ? (
+        {data.length >= 1 ? (
           <Table striped borderless responsive="md" hover>
             <thead>
               <tr>
@@ -57,7 +57,7 @@ function MyVerticallyCenteredModal(props) {
             </tbody>
           </Table>
         ) : (
-          <h4>data loading</h4>
+          <Card>No tasks for this project</Card>
         )}
       </Modal.Body>
       <Modal.Footer>

@@ -30,7 +30,7 @@ const Tasks = () => {
       <Card>
         <CreateTask />
       </Card>
-      {data ? (
+      {data.length >= 1 ? (
         <Table striped borderless responsive="lg" hover>
           <thead>
             <tr>
@@ -108,7 +108,7 @@ const Tasks = () => {
           </tbody>
         </Table>
       ) : (
-        <h4>data loading</h4>
+        <Card>No Tasks Available</Card>
       )}
     </Container>
   );
