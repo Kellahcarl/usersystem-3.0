@@ -1,4 +1,7 @@
 import {
+  GET_TASKOFUSER_FAIL,
+  GET_TASKOFUSER_REQUEST,
+  GET_TASKOFUSER_SUCCESS,
   GET_TASKSOFPROJECT_FAIL,
   GET_TASKSOFPROJECT_REQUEST,
   GET_TASKSOFPROJECT_SUCCESS,
@@ -26,16 +29,13 @@ export const taskReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-export const taskOfProjectReducer = (
-  state = initialState,
-  { type, payload }
-) => {
+export const TaskOfUserReducer = (state = initialState, { type, payload }) => {
   switch (type) {
-    case GET_TASKSOFPROJECT_REQUEST:
+    case GET_TASKOFUSER_REQUEST:
       return { ...state, loading: true };
-    case GET_TASKSOFPROJECT_SUCCESS:
+    case GET_TASKOFUSER_SUCCESS:
       return { ...state, loading: false, tasks: payload };
-    case GET_TASKSOFPROJECT_FAIL:
+    case GET_TASKOFUSER_FAIL:
       return { ...state, loading: false, error: payload };
     default:
       return state;

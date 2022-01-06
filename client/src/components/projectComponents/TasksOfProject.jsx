@@ -1,17 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTaskOFProject } from "../../redux/actions/taskActions";
+import {
+  getTaskOFProject,
+  getTaskOfSingleProject,
+  getTasks,
+} from "../../redux/actions/taskActions";
 import moment from "moment";
 
 import { Container, Card, Button, Table, Modal } from "react-bootstrap";
 
 function MyVerticallyCenteredModal(props) {
   const dispatch = useDispatch();
-  const { tasks } = useSelector((state) => state.tasksOfProject);
-  const data = tasks;
+  const { tasks } = useSelector((state) => state.tasks);
+  console.log(tasks);
 
+  const data = tasks.filter((task) => task.project_id === props.project_id);
   useEffect(() => {
-    dispatch(getTaskOFProject(props.project_id));
+    // dispatch(getTaskOfSingleProject(props.project_id));
+    dispatch(getTasks());
   }, [dispatch]);
 
   return (

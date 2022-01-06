@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0px;
+      }
+      .wrapper {
+        width: 100%;
+        margin: auto;
+        padding-bottom: 50px;
+      }
+      table,
+      tr,
+      td {
+        border-spacing: 0;
+      }
+      .login-btn {
+        background-color: crimson;
+        color: #ffffff;
+        text-decoration: none;
+        padding: 10px;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <table class="wrapper">
+      <tr>
+        <td>
+          <table width="600" style="margin: auto">
+            <tr>
+              <td
+                align="center"
+                style="background-color: #0080ff; padding: 15px"
+              >
+                <p style="font-size: 40px; color: #ffffff">User System</p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding: 20px">
+          <table width="600" style="margin: auto">
+            <tr>
+              <td>
+                <h2 style="font-size: 35px">Dear <%= name %>,</h2>
+                <p
+                  style="
+                    color: black;
+                    font-size: 30px;
+                    margin: 10px 0px;
+                    font-weight: 400;
+                  "
+                >
+                  Welcome to User System
+                </p>
+                <p
+                  style="
+                    color: black;
+                    font-size: 20px;
+                    margin: 10px 0px;
+                    font-weight: 400;
+                    max-width: 500px;
+                  "
+                >
+                  You have been added to the system and you can login using the
+                  link provided below and the username and password
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <h2>Details</h2>
+                <p style="font-size: 20px">
+                  Email
+                  <span style="color: crimson; font-weight: bold"
+                    ><%=email%></span
+                  >
+                </p>
+                <p style="font-size: 20px">
+                  Password
+                  <span style="color: crimson; font-weight: bold"
+                    ><%=password%></span
+                  >
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table width="600" style="margin: auto">
+            <tr>
+              <td>
+                <a class="login-btn" href="http://localhost:3000/login"
+                  >Click Here To Login</a
+                >
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

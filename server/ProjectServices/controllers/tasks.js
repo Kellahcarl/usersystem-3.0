@@ -194,6 +194,13 @@ module.exports = {
       await db.exec("sp_assignTask", { id, task_id, user_id });
       await db.exec("sp_assignUser", { user_id });
       await db.exec("sp_assigntaskuser", { task_id });
+      await db.query(
+        "INSERT INTO dbo.taskAssignQueue (task_id ,user_id, active) VALUES ('" +
+          task_id +
+          "''" +
+          user_id +
+          "', 1)"
+      );
 
       res.status(200).send({ message: "User added to task successfully" });
     } catch (error) {
@@ -224,6 +231,13 @@ module.exports = {
       await db.exec("sp_unassignTask", { task_id });
       await db.exec("sp_unassignUser", { user_id });
       await db.exec("sp_unassigntaskuser", { task_id });
+      await db.query(
+        "INSERT INTO dbo.taskAssignQueue (task_id ,user_id, active) VALUES ('" +
+          task_id +
+          "''" +
+          user_id +
+          "', 0)"
+      );
 
       res.send({ message: "User unassigned task successfully" });
     } catch (error) {
@@ -284,16 +298,18 @@ module.exports = {
         .send({ error: error.message, message: "Internal Sever Error" });
     }
   },
-  getAssignTasks: async (req, res) => {
-    const { project_id } = req.params;
-    if (!project_id) return res.status(400).send({ message: "Id is required" });
-
+  getAssignTasksOfUser: async (req, res) => {
+    const { user_id } = req.params;
+    console.log(user_id);
+    if (!user_id) return res.status(400).send({ message: "Id is required" });
+    console.log(user_id);
     try {
-      let { recordset } = await db.exec("sp_getProjectTasks", {
-        project_id,
+      let { recordset } = await db.exec("sp_getUserTasks", {
+        user_id,
       });
       res.status(200).send({ tasks: recordset });
     } catch (error) {
+      console.log(error.message);
       res
         .status(500)
         .send({ error: error.message, message: "Internal Sever Error" });

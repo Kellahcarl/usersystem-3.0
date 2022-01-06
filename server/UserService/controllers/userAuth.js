@@ -46,6 +46,11 @@ module.exports = {
         isAdmin: admin,
         isDeleted: 0,
       });
+      await db.query(
+        "INSERT INTO dbo.registrationQueue (user_id, active) VALUES ('" +
+          id +
+          "', 1)"
+      );
 
       res.send({ message: "User registered successfully" });
     } catch (error) {
@@ -95,7 +100,6 @@ module.exports = {
       const userResult = await db.exec("sp_getUser", {
         userId: req.body.userId,
       });
-      console.log(userResult);
 
       if (!userResult.recordset[0])
         return res.status(400).send({ message: "invalid userId provided" });

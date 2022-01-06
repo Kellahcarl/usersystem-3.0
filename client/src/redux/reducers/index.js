@@ -2,12 +2,12 @@ import { combineReducers } from "redux";
 import auth from "./auth";
 import message from "./message";
 import { projectReducer } from "./projectReducer";
-import { taskOfProjectReducer, taskReducer } from "./taskReducer";
 import {
-  assignedUsers,
-  unassignedUsersReducer,
-  usersReducer,
-} from "./userReducer";
+  taskOfProjectReducer,
+  TaskOfUserReducer,
+  taskReducer,
+} from "./taskReducer";
+import { unassignedUsersReducer, usersReducer } from "./userReducer";
 
 export default combineReducers({
   auth,
@@ -15,7 +15,6 @@ export default combineReducers({
   projects: projectReducer,
   tasks: taskReducer,
   users: usersReducer,
-  assignedUsers,
   unassignedUsers: unassignedUsersReducer,
-  tasksOfProject: taskOfProjectReducer,
+  taskOfUser: TaskOfUserReducer,
 });

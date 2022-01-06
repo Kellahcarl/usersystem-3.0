@@ -75,16 +75,16 @@ export const getSingleTask = async (project_id, task_id) => {
   );
   return message;
 };
-export const getassignedUser = async (task_id) => {
+export const getTasksOfSingleUser = async () => {
   const { data: message } = await axios.get(
-    BASE_URL + "/tasks/assign/" + task_id,
+    BASE_URL + `/tasks/user/${user.user._id}`,
     {
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
     }
   );
-  return message;
+  return message.tasks[0];
 };
 export const assignUserTask = async (task_id, user_id) => {
   const info = { task_id, user_id };
@@ -145,15 +145,4 @@ export const uncompleteTask = async (task_id) => {
     }
   );
   return message;
-};
-export const getTaskOfProject = async (project_id) => {
-  const { data: message } = await axios.get(
-    BASE_URL + `/tasks/tasks/${project_id}`,
-    {
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-      },
-    }
-  );
-  return message.tasks;
 };

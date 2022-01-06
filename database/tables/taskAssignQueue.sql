@@ -1,0 +1,6 @@
+CREATE TABLE dbo.taskAssignQueue
+( id INT PRIMARY KEY IDENTITY,
+project_id VARCHAR(100) NOT NULL,
+user_id VARCHAR(100) NOT NULL,
+active BIT NOT NULL,
+)

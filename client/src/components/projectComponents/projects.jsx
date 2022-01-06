@@ -17,6 +17,7 @@ const Projects = () => {
   useEffect(() => {
     dispatch(getProjects());
   }, [dispatch]);
+
   let data = projects.projects;
   // data ? console.log(data) : console.log("empty");
 
@@ -26,7 +27,7 @@ const Projects = () => {
         <CreateProject />
       </Card>
       {data ? (
-        <Table striped borderless responsive="lg" hover>
+        <Table striped borderless responsive="md" hover>
           <thead>
             <tr>
               <th>Project Name</th>
